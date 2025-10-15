@@ -1,5 +1,5 @@
 services:
-  adobe-sdfs:
+  adobe-hdfs:
     image: mongo:latest
     container_name: ADOBE
     restart: always
@@ -7,11 +7,11 @@ services:
       - "27018:27017"
     environment:
       - MONGO_INITDB_ROOT_USERNAME=adobe_admin
-      - MONGO_INITDB_ROOT_PASSWORD=adobe_sdfs_pass
+      - MONGO_INITDB_ROOT_PASSWORD=adobe_hdfs_pass
     volumes:
-      - sdfs_data:/data/db
-      - ./sdfs_config:/etc/mongod
-    command: mongod --config /etc/mongod/sdfs.conf
+      - hdfs_data:/data/db
+      - ./hdfs_config:/etc/mongod
+    command: mongod --config /etc/mongod/hdfs.conf
 
 volumes:
-  sdfs_data:
+  hdfs_data:
