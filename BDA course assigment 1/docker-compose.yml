@@ -1,0 +1,17 @@
+services:
+  adobe-sdfs:
+    image: mongo:latest
+    container_name: ADOBE
+    restart: always
+    ports:
+      - "27018:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=adobe_admin
+      - MONGO_INITDB_ROOT_PASSWORD=adobe_sdfs_pass
+    volumes:
+      - sdfs_data:/data/db
+      - ./sdfs_config:/etc/mongod
+    command: mongod --config /etc/mongod/sdfs.conf
+
+volumes:
+  sdfs_data:
